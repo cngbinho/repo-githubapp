@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Loading = styled.div`
   color: #fff;
@@ -101,4 +101,47 @@ export const IssueList = styled.ul`
       }
     }
   }
+`;
+
+export const IssueFilter = styled.div`
+  display: flex;
+  justify-content: 'center';
+  margin-top: 15px;
+
+  button {
+    flex: 1;
+    margin: 0 0.25rem;
+    padding: 8px;
+    border: 0;
+
+    &:nth-child(${props => props.active + 1}) {
+      border-bottom: 1px solid #7159c0;
+      box-sizing: 'border-box';
+    }
+  }
+`;
+
+export const PageAction = styled.div`
+  display: flex;
+  justify-content: 'center';
+  margin-top: 15px;
+
+  button {
+    flex: 1;
+    margin: 0 0.25rem;
+    padding: 8px;
+    border: 0;
+
+    ${props =>
+      css`
+        props.children.map(btn => {
+          if (btn.props.disabled === true) {
+            console.log('To aqui');
+            return
+              .btn-disable {
+                border: 1px solid #7159c0;
+              }
+          }
+        })
+      `}
 `;
